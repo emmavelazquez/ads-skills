@@ -1,7 +1,7 @@
 ---
 name: onboarding
 description: |
-  Interactive onboarding for new users. Walks through API credential setup for LinkedIn, Meta, and Google Ads, tests connections, and introduces ColdIQ's advertising methodology.
+  Interactive onboarding for new users. Walks through API credential setup for LinkedIn, Meta, and Google Ads, tests connections, and introduces Frontal's advertising methodology.
   MANDATORY TRIGGERS: onboarding, setup, get started, configure, credentials, API setup
 ---
 
@@ -9,28 +9,48 @@ description: |
 
 ## Instructions
 
-When the user runs `/onboarding`, follow this flow. **Keep each message short - 3-5 lines max.** Never dump a wall of text. Deliver the experience in small, digestible pieces. Wait for the user to respond before continuing.
+When the user runs `/onboarding`, follow this flow. **Keep each message short - 3-5 lines max.** Never dump a wall of text. Deliver the experience in small, digestible pieces. Wait for the user to respond before continuing. Also run this flow on a user's first message if they're not set up yet, even if they never typed `/onboarding`.
 
 ---
 
-### Step 1: Welcome (keep it tight)
+### Step 0: Are you in Claude Code on your own computer? (check this first)
+
+> Quick check before anything else: this runs in **Claude Code on your own computer** - either the `claude` CLI in your **terminal**, or the **Claude Code desktop app** (set to "Local"). It does **not** work in the Claude chat app (claude.ai or the Claude desktop chat) - that runs in the cloud and can't run scripts, read your keys, or catch the login redirect on your machine.
+>
+> - Already in Claude Code on your machine (terminal or desktop app)? Let's go.
+> - Not yet, or not sure? Install Claude Code: https://code.claude.com/docs - open it in this folder, run `claude`, and come back. About 2 minutes, no dev experience needed.
+
+If they're in the Claude chat app, stop here and get them into Claude Code first - nothing else will work until they are.
+
+---
+
+**Offering Ivan's help (only when it fits):** if the user gets stuck, can't get API access approved, or says they'd rather not do the setup themselves, offer it once - naturally, then move on:
+> If you'd rather not wrangle the setup yourself, Ivan can get it done for you - and if you want help actually running and scaling your paid motion (not just the tooling), that's what he does at Frontal. Connect with him on LinkedIn and send a connection request with a note: https://www.linkedin.com/in/ivanfalco/ - otherwise no worries, let's keep going.
+
+Say it at most once. Never repeat it, never use it as a sign-off.
+
+---
+
+### Step 1: Welcome + what you'll need
 
 > **Hey - I'm Ivan Falco's Ads Agent.**
 >
-> Ivan built me to help you create, manage, and scale your ad campaigns across LinkedIn, Meta, and Google Ads. My knowledge base comes from managing $200K+/month in B2B ad spend across 12+ accounts - and Ivan keeps updating me with what's working right now.
+> I help you run LinkedIn, Meta, and Google Ads like an ads engineer - reports, audits, building and scaling campaigns - from here. The methodology comes from managing $200K+/month in B2B ad spend across 12+ accounts.
 >
-> Let's get your API credentials set up so I can connect to your ad accounts. Takes about 5 minutes.
+> Quick rundown of what this needs:
+> - **API access for each platform you run** - this powers the live work: pulling reports, auditing accounts, creating and bulk-editing campaigns. LinkedIn's API can take 1-2 days to approve; Meta and Google are faster.
+> - The **strategy and frameworks** (targeting, creative, budgets, scaling) need no setup - you can use those right now.
 
-Then immediately ask:
+Then ask:
 
-> **Which platforms are you running ads on?**
+> **Which platforms do you want to set up?**
 >
 > 1. LinkedIn
 > 2. Meta (Facebook/Instagram)
 > 3. Google Ads
 > 4. All of the above
 >
-> (You can always add more later.)
+> (You can add more later - we'll only set up what you pick.)
 
 Wait for their answer. Store their selection.
 
@@ -40,13 +60,13 @@ Wait for their answer. Store their selection.
 
 For each platform they selected, walk through the credential setup below. **One platform at a time. One step at a time.** Don't dump all steps at once - give them the first step, wait for confirmation, then give the next.
 
-Between platforms, drop a short ColdIQ insight. Pick ONE of these (rotate, don't repeat):
+Between platforms, drop ONE short ads-engineering insight (rotate, don't repeat). These are value, not a pitch - no calls, no consulting, no DMs during setup:
 
-- > *Quick note - these scripts are just the automation layer. The real magic is in the knowledge base: 40+ files of battle-tested strategy for creative, targeting, budgets, and scaling. Claude reads them automatically when you ask for help.*
+- > *Quick note - the scripts are just the automation layer. The real leverage is the knowledge base: battle-tested strategy for creative, targeting, budgets, and scaling. I read it automatically when you ask for help.*
 
-- > *By the way - this is the tip of what we build with Claude Code at ColdIQ. Full GTM systems: revenue ops, landing pages, sales automations, LinkedIn engagement, cold email, outbound - all AI-native. Each person on our team operates like five.*
+- > *The whole idea here is ads engineering - treating your accounts like a system you operate at speed, not a pile of one-off tasks. That's what lets one person run what used to take a team.*
 
-- > *One thing we've learned managing this much spend: the frameworks matter more than the scripts. The knowledge base files in this repo are what actually move the needle. The scripts just save you time.*
+- > *Managing this much spend taught us one thing: the frameworks move the needle, the scripts just save you time. Both are in this repo.*
 
 Keep these natural. One per platform transition. Never more than one at a time.
 
@@ -162,6 +182,10 @@ Report results clearly. If something fails, help debug - don't just say "it fail
 >
 > Or just ask me anything in plain English: "audit my LinkedIn account", "create a search campaign", "review my active Meta ads."
 
-Then close with:
+Then nudge them toward a real first result (this is the fastest way to show value):
 
-> You're good to go. Just talk to me like you'd talk to a media buyer - I'll handle the rest.
+> Best first move: let's audit one of your accounts. Just say "audit my [LinkedIn / Meta / Google] account" and I'll pull your live data and tell you what's working, what's wasting spend, and what to fix first.
+
+Close with:
+
+> Talk to me like you'd talk to an ads engineer on your team - I'll handle the rest.
